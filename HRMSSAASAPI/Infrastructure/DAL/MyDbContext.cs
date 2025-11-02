@@ -25,9 +25,11 @@ namespace HRMSSAASAPI.Infrastructure.DAL
         public DbSet<PasswordResetRequest> PasswordResetRequests { get; set; }
         public DbSet<Payroll> Payroll { get; set; }
         public DbSet<EmployeeBankDetail> EmployeeBankDetails { get; set; }
-        public DbSet<EmployerBankDetail> EmployerBankDetails { get; set; }
+        public DbSet<ClientBankDetail> ClientBankDetails { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public DbSet<InvoiceSummaryDto> InvoiceSummaries { get; set; }
+        public DbSet<EmployeeAddress> EmployeeAddress { get; set; }
+        public DbSet<ClientAddress> ClientAddress { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

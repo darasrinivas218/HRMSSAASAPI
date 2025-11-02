@@ -62,8 +62,7 @@ namespace HRMSSAASAPI.Application.Repositories
                 existingInvoice.InvoiceNumber = invoiceDetail.InvoiceNumber;
                 existingInvoice.ClientId = invoiceDetail.ClientId;
                 existingInvoice.EmployeeId = invoiceDetail.EmployeeId;
-                existingInvoice.ProjectId = invoiceDetail.ProjectId;
-                existingInvoice.TimesheetId = invoiceDetail.TimesheetId;
+                existingInvoice.ProjectId = invoiceDetail.ProjectId;                
                 existingInvoice.InvoiceDate = invoiceDetail.InvoiceDate;
                 existingInvoice.InvoicePeriodFrom = invoiceDetail.InvoicePeriodFrom;
                 existingInvoice.InvoicePeriodTo = invoiceDetail.InvoicePeriodTo;

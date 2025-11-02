@@ -9,7 +9,6 @@ namespace HRMSSAASAPI.API.Controllers
     public class EmployeeProjectsController : ControllerBase
     {
         private readonly IEmployeeProjectRepository _repository;
-
         public EmployeeProjectsController(IEmployeeProjectRepository repository)
         {
             _repository = repository;

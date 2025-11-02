@@ -6,21 +6,21 @@ namespace HRMSSAASAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployerBankDetailsController : ControllerBase
+    public class ClientBankDetailsController : ControllerBase
     {
-        private readonly IEmployerBankDetailRepository _repository;
+        private readonly IClientBankDetailRepository _repository;
 
-        public EmployerBankDetailsController(IEmployerBankDetailRepository repository)
+        public ClientBankDetailsController(IClientBankDetailRepository repository)
         {
             _repository = repository;
         }
 
-        [HttpGet("GetAllEmployerBankDetails")]
-        public async Task<IActionResult> GetAllEmployerBankDetails()
+        [HttpGet("getAllClientBankDetails")]
+        public async Task<IActionResult> GetAllClientBankDetails()
         {
             try
             {
-                var data = await _repository.GetAllEmployerBankDetailsAsync();
+                var data = await _repository.GetAllClientBankDetailsAsync();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -29,12 +29,12 @@ namespace HRMSSAASAPI.API.Controllers
             }
         }
 
-        [HttpGet("GetEmployerBankDetailById/{id}")]
-        public async Task<IActionResult> GetEmployerBankDetailById(int id)
+        [HttpGet("getClientBankDetailById/{id}")]
+        public async Task<IActionResult> GetClientBankDetailById(int id)
         {
             try
             {
-                var detail = await _repository.GetEmployerBankDetailByIdAsync(id);
+                var detail = await _repository.GetClientBankDetailByIdAsync(id);
                 if (detail == null)
                     return NotFound($"Employer bank detail with ID {id} not found.");
                 return Ok(detail);
@@ -45,16 +45,16 @@ namespace HRMSSAASAPI.API.Controllers
             }
         }
 
-        [HttpPost("AddEmployerBankDetail")]
-        public async Task<IActionResult> AddEmployerBankDetail([FromBody] EmployerBankDetail entity)
+        [HttpPost("addClientBankDetail")]
+        public async Task<IActionResult> AddClientBankDetail([FromBody] ClientBankDetail entity)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await _repository.AddEmployerBankDetailAsync(entity);
-                return CreatedAtAction(nameof(GetEmployerBankDetailById), new { id = result.EmployerBankId }, result);
+                var result = await _repository.AddClientBankDetailAsync(entity);
+                return CreatedAtAction(nameof(GetClientBankDetailById), new { id = result.ClientBankId }, result);
             }
             catch (Exception ex)
             {
@@ -62,15 +62,15 @@ namespace HRMSSAASAPI.API.Controllers
             }
         }
 
-        [HttpPut("UpdateEmployerBankDetail/{id}")]
-        public async Task<IActionResult> UpdateEmployerBankDetail(int id, [FromBody] EmployerBankDetail entity)
+        [HttpPut("updateClientBankDetail/{id}")]
+        public async Task<IActionResult> UpdateClientBankDetail(int id, [FromBody] ClientBankDetail entity)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var updated = await _repository.UpdateEmployerBankDetailAsync(id, entity);
+                var updated = await _repository.UpdateClientBankDetailAsync(id, entity);
                 if (updated == null)
                     return NotFound($"Employer bank detail with ID {id} not found.");
                 return Ok(updated);
@@ -81,12 +81,12 @@ namespace HRMSSAASAPI.API.Controllers
             }
         }
 
-        [HttpDelete("DeleteEmployerBankDetail/{id}")]
-        public async Task<IActionResult> DeleteEmployerBankDetail(int id)
+        [HttpDelete("deleteClientBankDetail/{id}")]
+        public async Task<IActionResult> DeleteClientBankDetail(int id)
         {
             try
             {
-                var success = await _repository.DeleteEmployerBankDetailAsync(id);
+                var success = await _repository.DeleteClientBankDetailAsync(id);
                 if (!success)
                     return NotFound($"Employer bank detail with ID {id} not found.");
 

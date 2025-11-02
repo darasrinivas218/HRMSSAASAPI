@@ -16,7 +16,6 @@ namespace HRMSSAASAPI.Domain.Entities
 
         public int? EmployeeId { get; set; }
         public int? ProjectId { get; set; }
-        public int? TimesheetId { get; set; }
 
         [Required]
         public DateTime InvoiceDate { get; set; }

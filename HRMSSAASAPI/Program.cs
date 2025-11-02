@@ -35,9 +35,11 @@ builder.Services.AddScoped<IPasswordResetRequestRepository, PasswordResetRequest
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPayrollRepository, PayrollRepository>();
 builder.Services.AddScoped<IEmployeeBankDetailRepository, EmployeeBankDetailRepository>();
-builder.Services.AddScoped<IEmployerBankDetailRepository, EmployerBankDetailRepository>();
+builder.Services.AddScoped<IClientBankDetailRepository, ClientBankDetailRepository>();
 builder.Services.AddScoped<IInvoiceDetailsRepository, InvoiceDetailsRepository>();
 builder.Services.AddScoped<IGenerateInvoiceRepository, GenerateInvoiceRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+    
 
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
 

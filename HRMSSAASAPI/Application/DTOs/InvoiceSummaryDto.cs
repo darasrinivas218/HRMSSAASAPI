@@ -1,4 +1,6 @@
-﻿namespace HRMSSAASAPI.Application.DTOs
+﻿using HRMSSAASAPI.Domain.Entities;
+
+namespace HRMSSAASAPI.Application.DTOs
 {
     public class InvoiceSummaryDto
     {
@@ -20,5 +22,8 @@
         public string Remarks { get; set; }
         public decimal TotalHoursWorked { get; set; }
         public string InvoiceNumber { get; set; }
+        //public EmployeeAddress? EmployeeAddress { get; set; }
+        //public ClientAddress? ClientAddress { get; set; }
+        //public ClientBankDetail? ClientBankDetails { get; set; }
     }
 }

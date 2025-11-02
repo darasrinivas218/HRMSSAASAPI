@@ -5,20 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HRMSSAASAPI.Application.Repositories
 {
-    public class EmployerBankDetailRepository : IEmployerBankDetailRepository
+    public class ClientBankDetailRepository : IClientBankDetailRepository
     {
         private readonly MyDbContext _myDbContext;
 
-        public EmployerBankDetailRepository(MyDbContext myDbContext)
+        public ClientBankDetailRepository(MyDbContext myDbContext)
         {
             _myDbContext = myDbContext;
         }
 
-        public async Task<IEnumerable<EmployerBankDetail>> GetAllEmployerBankDetailsAsync()
+        public async Task<IEnumerable<ClientBankDetail>> GetAllClientBankDetailsAsync()
         {
             try
             {
-                return await _myDbContext.EmployerBankDetails.ToListAsync();
+                return await _myDbContext.ClientBankDetails.ToListAsync();
             }
             catch (Exception ex)
             {
@@ -26,11 +26,11 @@ namespace HRMSSAASAPI.Application.Repositories
             }
         }
 
-        public async Task<EmployerBankDetail?> GetEmployerBankDetailByIdAsync(int id)
+        public async Task<ClientBankDetail?> GetClientBankDetailByIdAsync(int id)
         {
             try
             {
-                return await _myDbContext.EmployerBankDetails.FindAsync(id);
+                return await _myDbContext.ClientBankDetails.FindAsync(id);
             }
             catch (Exception ex)
             {
@@ -38,11 +38,11 @@ namespace HRMSSAASAPI.Application.Repositories
             }
         }
 
-        public async Task<EmployerBankDetail> AddEmployerBankDetailAsync(EmployerBankDetail entity)
+        public async Task<ClientBankDetail> AddClientBankDetailAsync(ClientBankDetail entity)
         {
             try
             {
-                _myDbContext.EmployerBankDetails.Add(entity);
+                _myDbContext.ClientBankDetails.Add(entity);
                 await _myDbContext.SaveChangesAsync();
                 return entity;
             }
@@ -52,23 +52,22 @@ namespace HRMSSAASAPI.Application.Repositories
             }
         }
 
-        public async Task<EmployerBankDetail?> UpdateEmployerBankDetailAsync(int id, EmployerBankDetail entity)
+        public async Task<ClientBankDetail?> UpdateClientBankDetailAsync(int id, ClientBankDetail entity)
         {
             try
             {
-                var existing = await _myDbContext.EmployerBankDetails.FindAsync(id);
+                var existing = await _myDbContext.ClientBankDetails.FindAsync(id);
                 if (existing == null)
                     return null;
-
-                existing.EmployerId = entity.EmployerId;
-                existing.BankName = entity.BankName;
-                existing.AccountHolderName = entity.AccountHolderName;
-                existing.AccountNumber = entity.AccountNumber;
-                existing.RoutingNumber = entity.RoutingNumber;
-                existing.AccountType = entity.AccountType;
-                existing.IsPrimary = entity.IsPrimary;
-                existing.IsVerified = entity.IsVerified;
-                existing.UpdatedDate = DateTime.UtcNow;
+                existing.ClientId = entity.ClientId;
+                existing.ClientBankName = entity.ClientBankName;
+                existing.ClientBankAccountHolderName = entity.ClientBankAccountHolderName;
+                existing.ClientBankAccountNumber = entity.ClientBankAccountNumber;
+                existing.ClientBankRoutingNumber = entity.ClientBankRoutingNumber;
+                existing.ClientBankAccountType = entity.ClientBankAccountType;
+                existing.ClientBankIsPrimary = entity.ClientBankIsPrimary;
+                existing.ClientBankIsVerified = entity.ClientBankIsVerified;
+                existing.ClientBankUpdatedDate = DateTime.UtcNow;
 
                 await _myDbContext.SaveChangesAsync();
                 return existing;
@@ -79,15 +78,15 @@ namespace HRMSSAASAPI.Application.Repositories
             }
         }
 
-        public async Task<bool> DeleteEmployerBankDetailAsync(int id)
+        public async Task<bool> DeleteClientBankDetailAsync(int id)
         {
             try
             {
-                var existing = await _myDbContext.EmployerBankDetails.FindAsync(id);
+                var existing = await _myDbContext.ClientBankDetails.FindAsync(id);
                 if (existing == null)
                     return false;
 
-                _myDbContext.EmployerBankDetails.Remove(existing);
+                _myDbContext.ClientBankDetails.Remove(existing);
                 await _myDbContext.SaveChangesAsync();
                 return true;
             }
