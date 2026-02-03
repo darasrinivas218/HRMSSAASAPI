@@ -99,7 +99,7 @@ namespace HRMSSAASAPI.API.Controllers
         {
             try
             {
-                var deleted = await _repo.DeleteAddressAsync(id);
+                var deleted = await  _repo.DeleteAddressAsync(id);
                 return deleted
                     ? NoContent()
                     : NotFound(new { message = $"Employee address ID {id} not found." });
