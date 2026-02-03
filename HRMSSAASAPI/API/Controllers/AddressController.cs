@@ -106,7 +106,7 @@ namespace HRMSSAASAPI.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = ex.Message, details = ex.ToString() });
+                return StatusCode (500, new { message = ex.Message, details = ex.ToString() });
             }
         }
 
